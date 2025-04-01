@@ -1,24 +1,12 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+import { MongoStatusChecker } from './components/mongo-status-checker/mongo-status-checker';
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <h1>Bit 元件 - 測試 MongoDB</h1>
+      <MongoStatusChecker />
     </div>
   );
 }
