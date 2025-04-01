@@ -1,10 +1,34 @@
+// const express = require('express');
+// const mongoose = require('mongoose');
+// const cors = require('cors');
+
+// const app = express();
+// app.use(cors());
+
 const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
 
 const app = express();
-app.use(cors());
 
+const allowedOrigins = [
+  'https://connectdb-0yav.onrender.com'
+];
+
+const corsOptions = {
+  origin: function (origin, callback) {
+    if (!origin) {
+      return callback(null, true);
+    }
+    if (allowedOrigins.includes(origin)) {
+      callback(null, true); 
+    } else {
+      callback(new Error('CORS blocked: Not allowed by CORS policy'));
+    }
+  }
+};
+
+app.use(cors(corsOptions));
 const mongoUri = 'mongodb://couchspace-test:efjEyOKe4B5l49LkWspzPTJvuYwkvKbWY76wcTqHJPglF6TsKF29eXAKsAFJkKHWKzVXNXEXMfsuaGWhPC6hpA==@couchspace-test.mongo.cosmos.azure.com:10255/?ssl=true&retrywrites=false&replicaSet=globaldb&maxIdleTimeMS=120000&appName=@couchspace-test@';
 
 app.get('/api/check-db', async (req, res) => {
