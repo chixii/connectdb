@@ -5,7 +5,7 @@ export const MongoStatusChecker = () => {
   const [status, setStatus] = useState('checking...');
 
   useEffect(() => {
-    fetch('http://connectdb-0yav.onrender.com/api/check-db')
+    fetch('https://connectdb-0yav.onrender.com/api/check-db')
       .then((res) => res.json())
       .then((data) => {
         setStatus(data.status === 'connected' ? '✅ Connected' : '❌ Failed: ' + data.message);
